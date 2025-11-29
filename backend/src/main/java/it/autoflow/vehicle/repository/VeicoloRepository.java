@@ -10,4 +10,6 @@ public interface VeicoloRepository extends JpaRepository<Veicolo, Long> {
     Optional<Veicolo> findByTarga(String targa);
 
     Optional<Veicolo> findByVin(String vin);
+
+    boolean existsByTargaOrVin(String targa, String vin);
 }
