@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -38,10 +37,10 @@ public class Configurazione {
     private Set<OptionalAccessorio> optional = new HashSet<>();
 
     @Column(nullable = false)
-    private BigDecimal prezzoBase;
+    private Double prezzoBase;
 
     @Column(nullable = false)
-    private BigDecimal prezzoTotale;
+    private Double prezzoTotale;
 
     private String note;
 
