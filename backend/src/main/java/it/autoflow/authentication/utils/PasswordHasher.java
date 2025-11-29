@@ -1,4 +1,4 @@
-package it.autoflow.authentication;
+package it.autoflow.authentication.utils;
 
 import java.security.MessageDigest;
 
