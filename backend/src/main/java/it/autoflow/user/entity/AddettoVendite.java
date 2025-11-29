@@ -13,4 +13,8 @@ public class AddettoVendite extends User {
     private String nome;
     private String cognome;
     private String matricola;
+
+    // NUOVI CAMPI
+    private String email;
+    private String telefono;
 }
