@@ -51,9 +51,27 @@ public class AddettoVenditeServiceImpl implements AddettoVenditeService, CrudSer
     }
 
     @Override
-    public AddettoVendite update(Long id, AddettoVendite entity) {
-        entity.setId(id);
-        return addettoVenditeRepository.save(entity);
+    public AddettoVendite update(Long id, AddettoVendite updatedData) {
+
+        AddettoVendite existing = addettoVenditeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Addetto non trovato"));
+
+        // Aggiorna campi base
+        existing.setNome(updatedData.getNome());
+        existing.setCognome(updatedData.getCognome());
+        existing.setMatricola(updatedData.getMatricola());
+        existing.setEmail(updatedData.getEmail());
+        existing.setTelefono(updatedData.getTelefono());
+        existing.setAttivo(updatedData.isAttivo());
+        existing.setRuolo(updatedData.getRuolo());
+
+        // PASSWORD: aggiorna solo se presente
+        if (updatedData.getPassword() != null && !updatedData.getPassword().isBlank()) {
+            String hashed = PasswordHasher.sha512(updatedData.getPassword());
+            existing.setPassword(hashed);
+        }
+
+        return addettoVenditeRepository.save(existing);
     }
 
     @Override
