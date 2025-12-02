@@ -19,4 +19,6 @@ public interface FatturaService {
     FatturaDTO update(Long id, FatturaDTO dto);
 
     void delete(Long id);
+
+    FatturaDTO createFromProposta(Long propostaId);
 }

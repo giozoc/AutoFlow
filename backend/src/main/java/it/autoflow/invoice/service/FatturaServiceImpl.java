@@ -11,6 +11,7 @@ import it.autoflow.proposal.repository.PropostaRepository;
 import it.autoflow.user.entity.Cliente;
 import it.autoflow.user.repository.ClienteRepository;
 import jakarta.persistence.EntityNotFoundException;
+import it.autoflow.commons.service.PdfDocumentService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,15 +25,18 @@ public class FatturaServiceImpl implements FatturaService {
     private final ClienteRepository clienteRepository;
     private final PropostaRepository propostaRepository;
     private final DocumentoPDFRepository documentoPDFRepository;
+    private final PdfDocumentService pdfDocumentService;
 
     public FatturaServiceImpl(FatturaRepository fatturaRepository,
                               ClienteRepository clienteRepository,
                               PropostaRepository propostaRepository,
-                              DocumentoPDFRepository documentoPDFRepository) {
+                              DocumentoPDFRepository documentoPDFRepository,
+                              PdfDocumentService pdfDocumentService) {
         this.fatturaRepository = fatturaRepository;
         this.clienteRepository = clienteRepository;
         this.propostaRepository = propostaRepository;
         this.documentoPDFRepository = documentoPDFRepository;
+        this.pdfDocumentService = pdfDocumentService;
     }
 
     @Override
@@ -151,5 +155,66 @@ public class FatturaServiceImpl implements FatturaService {
         dto.setDataPagamento(entity.getDataPagamento());
         dto.setDocumentoPdfId(entity.getDocumentoPdf() != null ? entity.getDocumentoPdf().getId() : null);
         return dto;
+    }
+
+    @Override
+    public FatturaDTO createFromProposta(Long propostaId) {
+
+        // 1. Recupero la proposta
+        Proposta proposta = propostaRepository.findById(propostaId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Proposta non trovata con id: " + propostaId));
+
+        Cliente cliente = proposta.getCliente();
+        if (cliente == null) {
+            throw new EntityNotFoundException("La proposta non ha un cliente associato.");
+        }
+
+        // 2. Genero numero fattura
+        String numero = generateInvoiceNumber();
+
+        // 3. Creo il DTO usando i dati della proposta
+        FatturaDTO dto = new FatturaDTO();
+        dto.setNumeroFattura(numero);
+        dto.setDataEmissione(LocalDate.now());
+        dto.setClienteId(cliente.getId());
+        dto.setPropostaId(proposta.getId());
+        dto.setImportoTotale(proposta.getPrezzoProposta());
+        dto.setDataPagamento(null);
+        dto.setDocumentoPdfId(null);
+
+        // 4. Uso il metodo create() già esistente
+        FatturaDTO fattura = create(dto);
+
+        // 5. GENERO IL PDF
+        DocumentoPDF documento = pdfDocumentService.generateInvoicePdf(fattura.getId());
+
+        // 6. Collego il PDF alla fattura
+        Fattura f = fatturaRepository.findById(fattura.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Fattura non trovata dopo creazione"));
+
+        f.setDocumentoPdf(documento);
+        fatturaRepository.save(f);
+
+        fattura.setDocumentoPdfId(documento.getId());
+        return fattura;
+    }
+
+    private String generateInvoiceNumber() {
+        int year = LocalDate.now().getYear();
+        String prefix = "AF-" + year + "-";
+
+        // il repo ora restituisce una Fattura
+        Fattura lastFattura =
+                fatturaRepository.findTopByNumeroFatturaStartingWithOrderByNumeroFatturaDesc(prefix);
+
+        int next = 1;
+        if (lastFattura != null && lastFattura.getNumeroFattura() != null) {
+            String last = lastFattura.getNumeroFattura(); // es. AF-2025-003
+            String[] parts = last.split("-");
+            next = Integer.parseInt(parts[2]) + 1;
+        }
+
+        return prefix + String.format("%03d", next);
     }
 }

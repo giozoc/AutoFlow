@@ -34,4 +34,6 @@ public interface FatturaRepository extends JpaRepository<Fattura, Long> {
                                          @Param("mese") int mese);
 
     long countByDataPagamentoIsNull();
+
+    Fattura findTopByNumeroFatturaStartingWithOrderByNumeroFatturaDesc(String prefix);
 }
