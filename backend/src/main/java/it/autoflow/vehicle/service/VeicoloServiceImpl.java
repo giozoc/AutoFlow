@@ -1,5 +1,6 @@
 package it.autoflow.vehicle.service;
 
+import it.autoflow.vehicle.dto.VeicoloDTO;
 import it.autoflow.vehicle.entity.StatoVeicolo;
 import it.autoflow.vehicle.entity.Veicolo;
 import it.autoflow.vehicle.repository.VeicoloRepository;
@@ -78,5 +79,33 @@ public class VeicoloServiceImpl implements VeicoloService {
     @Override
     public boolean checkUnicitaTargaVin(String targa, String vin) {
         return !veicoloRepository.existsByTargaOrVin(targa, vin);
+    }
+
+    @Override
+    public List<VeicoloDTO> listShowroom() {
+        return veicoloRepository
+                .findByVisibileAlPubblicoTrueAndStato(StatoVeicolo.DISPONIBILE)
+                .stream()
+                .map(this::toDto)
+                .toList();
+    }
+
+
+    private VeicoloDTO toDto(Veicolo v) {
+        VeicoloDTO dto = new VeicoloDTO();
+        dto.setId(v.getId());
+        dto.setMarca(v.getMarca());
+        dto.setModello(v.getModello());
+        dto.setAnno(v.getAnno());
+        dto.setTarga(v.getTarga());
+        dto.setVin(v.getVin());
+        dto.setPrezzoBase(v.getPrezzoBase());
+        dto.setChilometraggio(v.getChilometraggio());
+        dto.setAlimentazione(v.getAlimentazione());
+        dto.setCambio(v.getCambio());
+        dto.setColoreEsterno(v.getColoreEsterno());
+        dto.setStato(v.getStato());
+        dto.setVisibileAlPubblico(v.isVisibileAlPubblico());
+        return dto;
     }
 }

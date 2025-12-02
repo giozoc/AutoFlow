@@ -96,4 +96,9 @@ public class VeicoloController {
         v.setVisibileAlPubblico(dto.isVisibileAlPubblico());
         return v;
     }
+
+    @GetMapping("/showroom")
+    public List<VeicoloDTO> getShowroom() {
+        return veicoloService.listShowroom();
+    }
 }

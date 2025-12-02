@@ -18,20 +18,42 @@ public class ShowroomServiceImpl implements ShowroomService {
 
     @Override
     public List<Veicolo> search(ShowroomFiltroDTO filtro) {
-        return veicoloRepository.findAll().stream()
-                .filter(v -> v.getStato() == StatoVeicolo.DISPONIBILE)
-                .filter(v -> filtro.getMarca() == null || v.getMarca().equalsIgnoreCase(filtro.getMarca()))
-                .filter(v -> filtro.getModello() == null || v.getModello().equalsIgnoreCase(filtro.getModello()))
-                .filter(v -> filtro.getPrezzoMin() == null || v.getPrezzoBase() >= filtro.getPrezzoMin())
-                .filter(v -> filtro.getPrezzoMax() == null || v.getPrezzoBase() <= filtro.getPrezzoMax())
+
+        // 1️⃣ prendiamo SOLO veicoli visibili + DISPONIBILE
+        List<Veicolo> base = veicoloRepository
+                .findByVisibileAlPubblicoTrueAndStato(StatoVeicolo.DISPONIBILE);
+
+        // 2️⃣ applichiamo i filtri, tenendo conto di NULL **e** stringa vuota
+        return base.stream()
+                .filter(v ->
+                        filtro.getMarca() == null
+                                || filtro.getMarca().isBlank()
+                                || v.getMarca().equalsIgnoreCase(filtro.getMarca())
+                )
+                .filter(v ->
+                        filtro.getModello() == null
+                                || filtro.getModello().isBlank()
+                                || v.getModello().equalsIgnoreCase(filtro.getModello())
+                )
+                // 👇 qui dipende dal tipo di prezzoBase / prezzoMin/Max:
+                // se usi BigDecimal, usa compareTo come sotto.
+                // se usi double/Double puoi lasciare >= e <=
+                .filter(v ->
+                        filtro.getPrezzoMin() == null
+                                || v.getPrezzoBase().compareTo(filtro.getPrezzoMin()) >= 0
+                )
+                .filter(v ->
+                        filtro.getPrezzoMax() == null
+                                || v.getPrezzoBase().compareTo(filtro.getPrezzoMax()) <= 0
+                )
                 .collect(Collectors.toList());
     }
 
     @Override
     public Veicolo getDettaglioPubblico(Long veicoloId) {
-        Veicolo v = veicoloRepository.findById(veicoloId).orElse(null);
-        if (v != null && v.getStato() == StatoVeicolo.DISPONIBILE)
-            return v;
-        return null;
+        return veicoloRepository.findById(veicoloId)
+                // mostriamo il dettaglio solo se è ancora visibile + disponibile
+                .filter(v -> v.isVisibileAlPubblico() && v.getStato() == StatoVeicolo.DISPONIBILE)
+                .orElse(null);
     }
 }
