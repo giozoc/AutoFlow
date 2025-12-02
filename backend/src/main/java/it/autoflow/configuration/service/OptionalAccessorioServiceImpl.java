@@ -1,4 +1,4 @@
-package it.autoflow.configuration.service.impl;
+package it.autoflow.configuration.service;
 
 import it.autoflow.configuration.dto.OptionalAccessorioDTO;
 import it.autoflow.configuration.entity.OptionalAccessorio;
