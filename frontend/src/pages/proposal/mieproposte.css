@@ -1,0 +1,242 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* CONTENITORE PAGINA */
+.mieproposte-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.mieproposte-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER / NAVBAR */
+.mieproposte-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mieproposte-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.mieproposte-logo span {
+    font-weight: 300;
+}
+
+.mieproposte-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Link login / registrati */
+.mieproposte-nav-link {
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieproposte-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Stato loggato */
+.mieproposte-user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Usate come "link" ma button per usare navigate */
+.mieproposte-header-link-as-button {
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #111827;
+    text-decoration: none;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieproposte-header-link-as-button:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* LINK ATTIVO */
+.mieproposte-header-link--active {
+    background-color: #111827 !important;
+    color: #f9fafb !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    border-color: #111827;
+}
+
+.mieproposte-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieproposte-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO */
+.mieproposte-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* RISULTATI / TABELLA */
+.mieproposte-results {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mieproposte-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.mieproposte-results-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.mieproposte-results-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.mieproposte-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    border: 1px solid #e5e7ff;
+}
+
+.mieproposte-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.mieproposte-table th,
+.mieproposte-table td {
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mieproposte-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+.mieproposte-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* STATO */
+.mieproposte-status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #e0f2fe;
+    color: #1e3a8a;
+}
+
+/* BOTTONE "Apri" */
+.mieproposte-btn-table {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background-color: #e0e0ff;
+    text-decoration: none;
+    color: #111827;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .mieproposte-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .mieproposte-inner {
+        padding-inline: 1rem;
+    }
+
+    .mieproposte-table-wrapper {
+        padding-inline: 0.75rem;
+    }
+
+    .mieproposte-table th,
+    .mieproposte-table td {
+        padding-inline: 0.35rem;
+    }
+}

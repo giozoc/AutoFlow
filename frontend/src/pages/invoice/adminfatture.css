@@ -1,0 +1,256 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.adminfat-page {
+    width: 100vw;
+    min-height: 100vh;
+
+    background-color: #f5f5fb;
+}
+
+.adminfat-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR ADMIN */
+.adminfat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.adminfat-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.adminfat-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.adminfat-logo span {
+    font-weight: 300;
+}
+
+.adminfat-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.adminfat-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.adminfat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* NAV PILL BUTTON */
+.adminfat-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition:
+            background-color 0.15s ease,
+            box-shadow 0.15s ease,
+            transform 0.1s ease;
+}
+
+.adminfat-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* NAV ACTIVE */
+.adminfat-nav-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.adminfat-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition:
+            background-color 0.15s ease,
+            box-shadow 0.15s ease,
+            transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.adminfat-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO PAGINA */
+.adminfat-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* LAYOUT (solo tabella) */
+.adminfat-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+/* CARD BASE */
+.adminfat-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.adminfat-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* TABELLA FATTURE */
+.adminfat-card--table {
+    /* placeholder per eventuali stili extra */
+}
+
+.adminfat-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.adminfat-table-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.adminfat-table-wrapper {
+    overflow-x: auto;
+}
+
+.adminfat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.adminfat-table th,
+.adminfat-table td {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.adminfat-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+/* BOTTONI AZIONE */
+.adminfat-table-btn {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition:
+            background-color 0.15s ease,
+            transform 0.1s ease;
+}
+
+.adminfat-table-btn:hover:enabled {
+    background-color: #f3f4ff;
+    transform: translateY(-1px);
+}
+
+.adminfat-table-btn:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .adminfat-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .adminfat-card {
+        padding-inline: 1.3rem;
+    }
+
+    .adminfat-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .adminfat-inner {
+        padding-inline: 1rem;
+    }
+
+    .adminfat-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .adminfat-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

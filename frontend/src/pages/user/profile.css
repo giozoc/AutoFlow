@@ -1,0 +1,226 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.profile-page {
+    min-height: 100vh;
+    background: linear-gradient(
+            to bottom,
+            #f7f7ff 0,
+            #f5f5fb 40%,
+            #f5f5fb 100%
+    );
+}
+
+.profile-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER TIPO CONFIG RIEPILOGO */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.75rem;
+}
+
+.profile-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+}
+
+.profile-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.profile-role {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-top: 0.35rem;
+}
+
+.profile-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* BACK + LOGOUT BUTTONS */
+.profile-back-btn,
+.profile-logout-btn {
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.profile-back-btn:hover,
+.profile-logout-btn:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+.profile-logout-btn {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+.profile-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+}
+
+/* MESSAGGI */
+.profile-message {
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.profile-message--error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.profile-message--success {
+    background-color: #ecfdf3;
+    color: #166534;
+}
+
+/* LAYOUT PRINCIPALE */
+.profile-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* CARD */
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.profile-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+/* FORM GRID */
+.profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.profile-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.profile-form-group--full {
+    grid-column: 1 / -1;
+}
+
+.profile-label {
+    font-weight: 500;
+}
+
+.profile-input {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.profile-input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+/* BOTTONI FORM */
+.profile-form-actions {
+    grid-column: 1 / -1;
+    margin-top: 0.3rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-btn-primary {
+    border-radius: 999px;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.profile-btn-primary:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .profile-inner {
+        padding-inline: 1rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-header-actions {
+        flex-direction: row;
+    }
+
+    .profile-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

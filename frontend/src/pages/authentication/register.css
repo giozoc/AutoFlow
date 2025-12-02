@@ -1,0 +1,159 @@
+/* SFONDO PAGINA – uguale al login */
+.reg-page {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+            to bottom,
+            #f7f7ff 0%,
+            #f5f5fb 40%,
+            #f5f5fb 100%
+    );
+
+    padding: 1rem;
+}
+
+/* CARD PRINCIPALE */
+.reg-card {
+    background-color: #ffffff;
+    padding: 2.3rem 2.8rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 640px;
+
+    border: 1px solid #e5e7ff;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+/* TESTI */
+.reg-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    color: #111827;
+}
+
+.reg-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+/* FORM */
+.reg-form {
+    margin-top: 0.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+/* Su schermi medi/larghi: 2 colonne per i campi */
+@media (min-width: 640px) {
+    .reg-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* bottoni e messaggi full-width */
+    .reg-btn {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Gruppi input */
+.reg-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.reg-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.reg-input {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    background: #f9fafb;
+
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.reg-input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.22);
+    outline: none;
+}
+
+/* ALERT */
+.reg-alert {
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.reg-alert--error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.reg-alert--success {
+    background-color: #ecfdf3;
+    color: #166534;
+}
+
+/* BOTTONE */
+.reg-btn {
+    margin-top: 0.3rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45);
+
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.reg-btn:hover:not(:disabled) {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.reg-btn:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* FOOTER LINK */
+.reg-footer {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.reg-link {
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.reg-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,315 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE */
+.aprop-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.aprop-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER */
+.aprop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.aprop-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.aprop-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    max-width: 620px;
+}
+
+/* BACK BUTTON */
+.aprop-back-btn {
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1.2rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.aprop-back-btn:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    transform: translateY(-1px);
+}
+
+/* MESSAGGI */
+.aprop-message {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+/* LAYOUT PRINCIPALE */
+.aprop-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* CARDS */
+.aprop-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.4rem 1.7rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.aprop-card--wide {
+    grid-column: 1 / -1;
+}
+
+.aprop-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+/* FORM PROPOSTA */
+.aprop-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.7rem 1rem;
+}
+
+.aprop-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.aprop-form-group--full {
+    grid-column: 1 / -1;
+}
+
+.aprop-label {
+    font-weight: 500;
+}
+
+.aprop-input,
+.aprop-select,
+.aprop-textarea {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.aprop-input:focus,
+.aprop-select:focus,
+.aprop-textarea:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+.aprop-textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.aprop-textarea--readonly {
+    background-color: #f3f4f6;
+}
+
+/* AZIONI FORM */
+.aprop-actions-main {
+    margin-top: 1.1rem;
+}
+
+/* BUTTONS */
+.aprop-primary-btn,
+.aprop-secondary-btn {
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.aprop-primary-btn {
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+}
+
+.aprop-primary-btn:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.aprop-secondary-btn {
+    background-color: #e0e7ff;
+    color: #111827;
+}
+
+.aprop-secondary-btn:hover:enabled {
+    background-color: #c7d2fe;
+    transform: translateY(-1px);
+}
+
+.aprop-primary-btn:disabled,
+.aprop-secondary-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* BLOCCO FATTURA */
+.aprop-invoice-block {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #cbd5e1;
+}
+
+.aprop-invoice-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.aprop-invoice-info {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.aprop-invoice-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.aprop-invoice-result {
+    font-size: 0.9rem;
+}
+
+/* INFO BODY (CONFIG, VEICOLO) */
+.aprop-info-body {
+    font-size: 0.95rem;
+}
+
+.aprop-info-body p {
+    margin: 0.25rem 0;
+}
+
+.aprop-label-inline {
+    color: #6b7280;
+}
+
+.aprop-value-inline {
+    font-weight: 500;
+}
+
+.aprop-value-inline--strong {
+    font-weight: 700;
+}
+
+.aprop-vehicle-main {
+    margin-bottom: 0.5rem;
+}
+
+/* OPTIONAL LIST */
+.aprop-optional-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.aprop-optional-item {
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.9rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+.aprop-optional-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.aprop-optional-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.aprop-optional-desc {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .aprop-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .aprop-card {
+        padding-inline: 1.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .aprop-inner {
+        padding-inline: 1rem;
+    }
+
+    .aprop-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .aprop-back-btn {
+        align-self: flex-start;
+    }
+}

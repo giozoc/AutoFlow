@@ -1,0 +1,172 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.admindash-page {
+    width: 100vw;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.admindash-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER + NAVBAR */
+.admindash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+/* LOGO + TESTO */
+.admindash-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.admindash-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.admindash-logo span {
+    font-weight: 300;
+}
+
+.admindash-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.admindash-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admindash-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* NAV BUTTONS */
+.admindash-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.admindash-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* LOGOUT */
+.admindash-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.admindash-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* MAIN CONTENT */
+.admindash-main {
+    margin-top: 0.5rem;
+}
+
+.admindash-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.6rem 1.8rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+    max-width: 700px;
+}
+
+.admindash-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.admindash-card-text {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .admindash-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admindash-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .admindash-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .admindash-inner {
+        padding-inline: 1rem;
+    }
+
+    .admindash-logo {
+        font-size: 1.7rem;
+    }
+}

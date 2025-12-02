@@ -1,0 +1,276 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.adminstat-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.adminstat-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR ADMIN (come adminclienti/adminfatture) */
+.adminstat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.adminstat-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.adminstat-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.adminstat-logo span {
+    font-weight: 300;
+}
+
+.adminstat-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.adminstat-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.adminstat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* LINK PROFILO (se vuoi più stile puoi adattare) */
+.showroom-header-link {
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+/* NAV PILL BUTTON */
+.adminstat-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.adminstat-nav-link:hover,
+.showroom-header-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* NAV ACTIVE */
+.adminstat-nav-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.adminstat-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.adminstat-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO PAGINA */
+.adminstat-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* LAYOUT PRINCIPALE */
+.adminstat-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+/* CARD BASE */
+.adminstat-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.adminstat-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* CARD FULL WIDTH (tabella) */
+.adminstat-card--full {
+    grid-column: 1 / -1;
+}
+
+/* KPI GRID */
+.adminstat-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.adminstat-kpi {
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.adminstat-kpi-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.adminstat-kpi-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* TABELLA PROPOSTE PER STATO */
+.adminstat-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.adminstat-table-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.adminstat-table-wrapper {
+    overflow-x: auto;
+}
+
+.adminstat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.adminstat-table th,
+.adminstat-table td {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.adminstat-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .adminstat-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .adminstat-card {
+        padding-inline: 1.3rem;
+    }
+
+    .adminstat-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .adminstat-inner {
+        padding-inline: 1rem;
+    }
+
+    .adminstat-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .adminstat-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .adminstat-kpi-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

@@ -1,0 +1,374 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.adminveh-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.adminveh-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR ADMIN */
+.adminveh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.adminveh-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.adminveh-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.adminveh-logo span {
+    font-weight: 300;
+}
+
+.adminveh-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.adminveh-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.adminveh-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* NAV PILL BUTTON */
+.adminveh-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.adminveh-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* NAV ACTIVE */
+.adminveh-nav-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.adminveh-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.adminveh-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO PAGINA */
+.adminveh-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* LAYOUT FORM + TABELLA */
+.adminveh-layout {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+/* CARD BASE */
+.adminveh-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.adminveh-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* FORM GRID */
+.adminveh-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.adminveh-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.adminveh-form-group--full {
+    grid-column: 1 / -1;
+}
+
+.adminveh-label {
+    font-weight: 500;
+}
+
+.adminveh-input {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.adminveh-input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+.adminveh-select {
+    padding-right: 2rem;
+}
+
+/* CHECKBOX RIGA */
+.adminveh-checkbox-row {
+    grid-column: 1 / -1;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* BOTTONI FORM */
+.adminveh-form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.adminveh-btn-primary,
+.adminveh-btn-secondary {
+    border-radius: 999px;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.adminveh-btn-primary {
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+}
+
+.adminveh-btn-primary:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.adminveh-btn-secondary {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.adminveh-btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+/* TABELLA VEICOLI */
+.adminveh-card--table {
+    /* card destra */
+}
+
+.adminveh-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.adminveh-table-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.adminveh-table-wrapper {
+    overflow-x: auto;
+}
+
+.adminveh-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.adminveh-table th,
+.adminveh-table td {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.adminveh-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+/* SELECT STATO NELLA TABELLA */
+.adminveh-table-select {
+    border-radius: 999px;
+    border: 1px solid #d1d5de;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.85rem;
+    background-color: #ffffff;
+}
+
+/* BADGE VISIBILITÀ */
+.adminveh-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.adminveh-badge--visible {
+    background-color: #ecfdf3;
+    color: #166534;
+}
+
+.adminveh-badge--hidden {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* AZIONI TABELLA */
+.adminveh-table-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.adminveh-table-btn {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.adminveh-table-btn:hover {
+    background-color: #f3f4ff;
+    transform: translateY(-1px);
+}
+
+.adminveh-table-btn--danger {
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .adminveh-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .adminveh-card {
+        padding-inline: 1.3rem;
+    }
+
+    .adminveh-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .adminveh-inner {
+        padding-inline: 1rem;
+    }
+
+    .adminveh-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .adminveh-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

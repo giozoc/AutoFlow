@@ -1,0 +1,222 @@
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE */
+.miefatture-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.miefatture-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR */
+.miefatture-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo a sinistra, nav a destra */
+    width: 100%;
+    gap: 1rem;                       /* piccolo spazio minimo interno */
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* NAV a destra dell'header */
+.miefatture-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;        /* spazio tra eventuali elementi nel nav */
+    white-space: nowrap; /* evita che i bottoni vadano a capo */
+}
+
+/* Gruppo di pulsanti (Profilo, Le mie configurazioni, ...) */
+.miefatture-user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;         /* spazio tra un pulsante e l'altro */
+}
+
+.miefatture-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.miefatture-logo span {
+    font-weight: 300;
+}
+
+/* NAV LINKS */
+.miefatture-header-link {
+    padding: 0.45rem 0.9rem;
+    background: #fff;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.15s;
+}
+
+.miefatture-header-link:hover {
+    background-color: #f3f4ff;
+    transform: translateY(-1px);
+}
+
+.miefatture-header-link--active {
+    background-color: #111827 !important;
+    color: #fff !important;
+    border-color: #111827 !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGIN/REGISTER */
+.miefatture-nav-link {
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    text-decoration: none;
+    color: #111827;
+    transition: 0.15s;
+}
+
+.miefatture-nav-link:hover {
+    background: #f3f4ff;
+    transform: translateY(-1px);
+}
+
+/* LOGOUT */
+.miefatture-logout-btn {
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background-color: #111827;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: 0.15s;
+}
+
+.miefatture-logout-btn:hover {
+    background: #020617;
+}
+
+/* TITLE */
+.miefatture-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* TABLE AREA */
+.miefatture-results {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.miefatture-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.miefatture-results-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.miefatture-results-subtitle {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* TABLE CARD */
+.miefatture-table-wrapper {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid #e5e7ff;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.miefatture-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.miefatture-table th {
+    background: #f3f4ff;
+    padding: 0.6rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.miefatture-table td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.miefatture-table tr:hover {
+    background: #f9fafb;
+}
+
+/* PDF BUTTON */
+.miefatture-btn-table {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background: #e0e0ff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.15s;
+}
+
+.miefatture-btn-table:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.miefatture-btn-table:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .miefatture-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .miefatture-inner {
+        padding-inline: 1rem;
+    }
+
+    .miefatture-table td,
+    .miefatture-table th {
+        padding: 0.45rem;
+    }
+}

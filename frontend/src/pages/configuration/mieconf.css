@@ -1,0 +1,406 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* CONTENITORE PAGINA */
+.mieconf-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.mieconf-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER / NAVBAR */
+.mieconf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mieconf-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.mieconf-logo span {
+    font-weight: 300;
+}
+
+.mieconf-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Link login / registrati */
+.mieconf-nav-link {
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieconf-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Stato loggato */
+.mieconf-user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.mieconf-header-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #111827;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieconf-header-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* LINK ATTIVO */
+.mieconf-header-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    border-color: #111827;
+}
+
+.mieconf-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieconf-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO + MESSAGGI */
+.mieconf-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.mieconf-message {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+}
+
+.mieconf-message--error {
+    color: #b91c1c;
+}
+
+.mieconf-message--warning {
+    color: #b45309;
+}
+
+/* LAYOUT PRINCIPALE */
+.mieconf-layout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: flex-start;
+    margin-top: 1rem;
+}
+
+/* FORM PANEL (tipo filtro showroom) */
+.mieconf-form-panel {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.mieconf-form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.mieconf-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 0.75rem;
+}
+
+.mieconf-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+}
+
+.mieconf-form-group--full {
+    grid-column: 1 / -1;
+}
+
+.mieconf-form-label {
+    font-weight: 500;
+}
+
+.mieconf-select,
+.mieconf-textarea,
+.mieconf-input-readonly {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.mieconf-select:focus,
+.mieconf-textarea:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+.mieconf-textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.mieconf-input-readonly {
+    background-color: #f9fafb;
+}
+
+.mieconf-input-strong {
+    font-weight: 700;
+}
+
+/* OPTIONAL */
+.mieconf-optional-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.mieconf-optional-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+}
+
+.mieconf-optional-card {
+    border: 1px solid #eee;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    background-color: #f9fafb;
+}
+
+.mieconf-optional-desc {
+    font-size: 0.85rem;
+}
+
+.mieconf-optional-price {
+    font-weight: 600;
+}
+
+/* BOTTONE CREA CONFIG */
+.mieconf-btn-primary {
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.mieconf-btn-primary:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.mieconf-btn-primary:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* RISULTATI / TABELLA */
+.mieconf-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mieconf-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.mieconf-results-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.mieconf-results-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.mieconf-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    border: 1px solid #e5e7ff;
+}
+
+.mieconf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.mieconf-table th,
+.mieconf-table td {
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mieconf-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+.mieconf-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Bottoni tabella */
+.mieconf-btn-table {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    background-color: #ffffff;
+}
+
+.mieconf-btn-table--primary {
+    background-color: #e0e0ff;
+}
+
+.mieconf-btn-table--success {
+    background-color: #e0ffe0;
+}
+
+.mieconf-btn-delete {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    border: 1px solid #fecaca;
+    background-color: #fef2f2;
+    color: red;
+    cursor: pointer;
+}
+
+.mieconf-btn-delete--disabled {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+    color: gray;
+    cursor: not-allowed;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .mieconf-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .mieconf-form-panel {
+        order: 1;
+    }
+
+    .mieconf-results {
+        order: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .mieconf-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .mieconf-inner {
+        padding-inline: 1rem;
+    }
+}

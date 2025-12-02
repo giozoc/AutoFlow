@@ -1,0 +1,404 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.admincfg-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.admincfg-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR ADMIN */
+.admincfg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.admincfg-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.admincfg-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.admincfg-logo span {
+    font-weight: 300;
+}
+
+.admincfg-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.admincfg-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admincfg-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* NAV PILL BUTTON */
+.admincfg-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.admincfg-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* NAV ACTIVE */
+.admincfg-nav-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.admincfg-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.admincfg-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO PAGINA */
+.admincfg-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* LAYOUT FORM + TABELLA */
+.admincfg-layout {
+    display: grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: flex-start;
+}
+
+/* CARD BASE */
+.admincfg-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.admincfg-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* FORM GRID */
+.admincfg-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.admincfg-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.admincfg-form-group--full {
+    grid-column: 1 / -1;
+}
+
+.admincfg-label {
+    font-weight: 500;
+}
+
+/* INPUT / SELECT / TEXTAREA */
+.admincfg-input {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.admincfg-input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+.admincfg-input--bold {
+    font-weight: 600;
+}
+
+.admincfg-select {
+    padding-right: 2rem;
+}
+
+.admincfg-textarea {
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5de;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    min-height: 70px;
+    resize: vertical;
+    background-color: #f9fafb;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.admincfg-textarea:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.18);
+}
+
+/* OPTIONAL GRID */
+.admincfg-subsection-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.admincfg-optionals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #e5e7eb;
+    padding: 0.6rem;
+    border-radius: 0.75rem;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.admincfg-optional-card {
+    border: 1px solid #eee;
+    border-radius: 0.75rem;
+    padding: 0.55rem;
+    font-size: 0.85rem;
+    background-color: #f9fafb;
+}
+
+.admincfg-optional-desc {
+    font-size: 0.8rem;
+    color: #4b5563;
+}
+
+.admincfg-optional-price {
+    font-weight: 600;
+}
+
+/* BOTTONI FORM */
+.admincfg-form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.admincfg-btn-primary,
+.admincfg-btn-secondary {
+    border-radius: 999px;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.admincfg-btn-primary {
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+}
+
+.admincfg-btn-primary:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.admincfg-btn-secondary {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.admincfg-btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+/* TABELLA CONFIGURAZIONI */
+.admincfg-card--table {
+    /* card destra */
+}
+
+.admincfg-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+}
+
+.admincfg-table-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.admincfg-table-wrapper {
+    overflow-x: auto;
+}
+
+.admincfg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.admincfg-table th,
+.admincfg-table td {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+.admincfg-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+/* AZIONI TABELLA */
+.admincfg-table-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.admincfg-table-btn {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.admincfg-table-btn:hover:enabled {
+    background-color: #f3f4ff;
+    transform: translateY(-1px);
+}
+
+.admincfg-table-btn--danger {
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+.admincfg-table-btn--primarysoft {
+    border-color: #c7d2fe;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .admincfg-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .admincfg-card {
+        padding-inline: 1.3rem;
+    }
+
+    .admincfg-nav {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .admincfg-inner {
+        padding-inline: 1rem;
+    }
+
+    .admincfg-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admincfg-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

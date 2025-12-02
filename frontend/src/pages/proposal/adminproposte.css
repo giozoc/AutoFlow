@@ -1,0 +1,245 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE WRAPPER */
+.adminprop-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.adminprop-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* NAVBAR ADMIN */
+.adminprop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.adminprop-logo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.adminprop-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.adminprop-logo span {
+    font-weight: 300;
+}
+
+.adminprop-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* NAV + LOGOUT */
+.adminprop-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.adminprop-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* NAV PILL BUTTON */
+.adminprop-nav-link {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #111827;
+    box-shadow: 0 0 0 1px #e5e7eb;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.adminprop-nav-link:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+/* NAV ACTIVE */
+.adminprop-nav-link--active {
+    background-color: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+/* LOGOUT BUTTON */
+.adminprop-logout-btn {
+    border-radius: 999px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #111827;
+    color: #f9fafb;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.adminprop-logout-btn:hover {
+    background-color: #020617;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.5);
+    transform: translateY(-1px);
+}
+
+/* TITOLO PAGINA */
+.adminprop-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* MAIN */
+.adminprop-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* CARD BASE */
+.adminprop-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.adminprop-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* HEADER TABELLA */
+.adminprop-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+    gap: 0.75rem;
+}
+
+.adminprop-table-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* TABELLA */
+.adminprop-table-wrapper {
+    overflow-x: auto;
+}
+
+.adminprop-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.adminprop-table th,
+.adminprop-table td {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+.adminprop-table th {
+    font-weight: 600;
+    background-color: #f3f4ff;
+}
+
+/* LINK TABELLA */
+.adminprop-table-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+.adminprop-table-link:hover {
+    text-decoration: underline;
+}
+
+/* BOTTONE "Apri" */
+.adminprop-btn-table {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background-color: #e0e0ff;
+    text-decoration: none;
+    color: #111827;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .adminprop-nav {
+        justify-content: flex-start;
+    }
+
+    .adminprop-card {
+        padding-inline: 1.3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .adminprop-inner {
+        padding-inline: 1rem;
+    }
+
+    .adminprop-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .adminprop-header-right {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

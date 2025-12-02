@@ -1,0 +1,305 @@
+/* RESET LEGGERO */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+    color: #111827;
+    background-color: #f5f5fb;
+}
+
+/* PAGE */
+.prop-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #f5f5fb;
+}
+
+.prop-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+/* HEADER */
+.prop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.prop-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.prop-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    max-width: 580px;
+}
+
+/* BACK BUTTON */
+.prop-back-btn {
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1.1rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.prop-back-btn:hover {
+    background-color: #f3f4ff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+    transform: translateY(-1px);
+}
+
+/* MESSAGGI */
+.prop-message {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.prop-message--error {
+    /* colore gestito inline (rosso) */
+}
+
+.prop-message--info {
+    /* colore gestito inline (verde) */
+}
+
+/* LAYOUT CARDS */
+.prop-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* CARD BASE */
+.prop-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.4rem 1.7rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7ff;
+}
+
+.prop-card--wide {
+    grid-column: 1 / -1;
+}
+
+.prop-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* GRID INTERNA PROPOSTA */
+.prop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem 1.25rem;
+}
+
+.prop-grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.prop-grid-item--full {
+    grid-column: 1 / -1;
+}
+
+/* LABEL / VALUE */
+.prop-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.prop-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.prop-value--main {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* STATO BADGE */
+.prop-badge {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: #e0f2fe;
+    color: #1e3a8a;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* CONFIG / VEICOLO */
+.prop-config-body {
+    font-size: 0.95rem;
+}
+
+.prop-config-body p {
+    margin: 0.25rem 0;
+}
+
+.prop-label-inline {
+    color: #6b7280;
+}
+
+.prop-value-inline {
+    font-weight: 500;
+}
+
+.prop-value-inline--strong {
+    font-weight: 700;
+}
+
+.prop-vehicle-main {
+    margin-bottom: 0.5rem;
+}
+
+/* OPTIONAL */
+.prop-optional-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.prop-optional-item {
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.9rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+.prop-optional-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.prop-optional-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.prop-optional-desc {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+/* AZIONI */
+.prop-info-text {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.prop-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.prop-primary-btn,
+.prop-secondary-btn {
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.prop-primary-btn {
+    background-color: #111827;
+    color: #f9fafb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+}
+
+.prop-primary-btn:hover:enabled {
+    background-color: #020617;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
+}
+
+.prop-secondary-btn {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.prop-secondary-btn:hover:enabled {
+    background-color: #fecaca;
+    transform: translateY(-1px);
+}
+
+.prop-primary-btn:disabled,
+.prop-secondary-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* FOOTER LINK */
+.prop-footer-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.prop-footer-link a {
+    color: #111827;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+    .prop-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .prop-card {
+        padding-inline: 1.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .prop-inner {
+        padding-inline: 1rem;
+    }
+
+    .prop-header {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .prop-back-btn {
+        align-self: flex-start;
+    }
+}
