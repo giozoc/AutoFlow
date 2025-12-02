@@ -75,6 +75,8 @@ public class ClienteController {
         dto.setTelefono(c.getTelefono());
         dto.setIndirizzo(c.getIndirizzo());
         dto.setAttivo(c.isAttivo());
+        dto.setDataNascita(c.getDataNascita());
+        dto.setCodiceFiscale(c.getCodiceFiscale());
         return dto;
     }
 
@@ -87,6 +89,8 @@ public class ClienteController {
         c.setTelefono(dto.getTelefono());
         c.setIndirizzo(dto.getIndirizzo());
         c.setAttivo(dto.isAttivo());
+        c.setDataNascita(dto.getDataNascita());      // 🔴 CORRETTO
+        c.setCodiceFiscale(dto.getCodiceFiscale());  // 🔴 CORRETTO
         return c;
     }
 }

@@ -1,10 +1,9 @@
 package it.autoflow.authentication.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 public class RegisterClienteDTO {
@@ -29,4 +28,10 @@ public class RegisterClienteDTO {
 
     @NotBlank(message = "L'indirizzo è obbligatorio.")
     private String indirizzo;
+
+    @NotBlank(message = "Il CF è obbligatorio.")
+    private String codiceFiscale;
+
+    @NotNull(message = "La data di nascita è obbligatoria.")
+    private LocalDate dataNascita;
 }

@@ -58,6 +58,8 @@ public class ClienteServiceImpl implements ClienteService, CrudService<Cliente, 
         existing.setTelefono(entity.getTelefono());
         existing.setIndirizzo(entity.getIndirizzo());
         existing.setAttivo(entity.isAttivo());
+        existing.setCodiceFiscale(entity.getCodiceFiscale());
+        existing.setDataNascita(entity.getDataNascita());
 
         // se usi l'email come username, tienila allineata
         existing.setUsername(entity.getEmail());
