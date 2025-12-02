@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class LoginResponseDTO {
-    private String token;        // session token
+    private String token;
     private String ruolo;        // CLIENTE / ADDETTO / ADMIN
     private Long userId;
+    private boolean mustChangePassword;   // 👈 nuovo campo
 }

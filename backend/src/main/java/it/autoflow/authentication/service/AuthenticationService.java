@@ -13,9 +13,13 @@ public interface AuthenticationService {
 
     boolean activateAccount(String token);
 
-    void requestPasswordReset(String email);
+    //void requestPasswordReset(String email);
+
+    PasswordResetResultDTO requestPasswordReset(String email);
 
     boolean confirmPasswordReset(PasswordResetConfirmDTO dto);
+
+    boolean changePasswordAfterReset(PasswordFirstChangeDTO dto);
 
     User getUserFromToken(String token);
 }
