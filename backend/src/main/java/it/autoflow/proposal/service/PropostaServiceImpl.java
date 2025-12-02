@@ -14,6 +14,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,14 +74,21 @@ public class PropostaServiceImpl implements PropostaService {
         Cliente cliente = clienteRepository.findById(dto.getClienteId())
                 .orElseThrow(() -> new EntityNotFoundException("Cliente non trovato con id: " + dto.getClienteId()));
 
-        AddettoVendite addetto = addettoVenditeRepository.findById(dto.getAddettoVenditeId())
-                .orElseThrow(() -> new EntityNotFoundException("Addetto vendite non trovato con id: " + dto.getAddettoVenditeId()));
+        if (dto.getAddettoVenditeId() != null) {
+            AddettoVendite addetto = addettoVenditeRepository.findById(dto.getAddettoVenditeId())
+                    .orElseThrow(() -> new EntityNotFoundException(
+                            "Addetto vendite non trovato con id: " + dto.getAddettoVenditeId()
+                    ));
+            proposta.setAddettoVendite(addetto);
+        } else {
+            // creata dal cliente → nessun addetto ancora assegnato
+            proposta.setAddettoVendite(null);
+        }
 
         Configurazione configurazione = configurazioneRepository.findById(dto.getConfigurazioneId())
                 .orElseThrow(() -> new EntityNotFoundException("Configurazione non trovata con id: " + dto.getConfigurazioneId()));
 
         proposta.setCliente(cliente);
-        proposta.setAddettoVendite(addetto);
         proposta.setConfigurazione(configurazione);
 
         proposta.setPrezzoProposta(dto.getPrezzoProposta());
@@ -88,7 +96,7 @@ public class PropostaServiceImpl implements PropostaService {
 
         // se non arriva la data, imposto oggi
         proposta.setDataCreazione(
-                dto.getDataCreazione() != null ? dto.getDataCreazione() : LocalDate.now()
+                dto.getDataCreazione() != null ? dto.getDataCreazione() : LocalDateTime.now()
         );
         proposta.setDataScadenza(dto.getDataScadenza());
         proposta.setNoteCliente(dto.getNoteCliente());
