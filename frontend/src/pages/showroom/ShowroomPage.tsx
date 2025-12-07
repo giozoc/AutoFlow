@@ -91,6 +91,8 @@ const ShowroomPage: React.FC = () => {
         <div className="showroom-page">
             <div className="showroom-inner">
                 {/* HEADER */}
+
+
                 <header className="showroom-header">
                     <div className="showroom-logo">
                         AutoFlow – <span>Showroom</span>
@@ -98,18 +100,14 @@ const ShowroomPage: React.FC = () => {
 
                     <nav className="showroom-header-right">
                         {isClienteLoggato ? (
-                            <div className="showroom-user-info">
-                                <span className="showroom-user-welcome">
-                                    Ciao{' '}
-                                    <strong>
-                                        {nomeCliente ?? 'cliente'}
-                                    </strong>{' '}
-                                    👋
-                                </span>
-                                <Link
-                                    to="/"
-                                    className="showroom-header-link"
-                                >
+                            <div
+                                className="showroom-user-info"
+                                data-test="dashboard-cliente"
+                            >
+                <span className="showroom-user-welcome">
+                    Ciao <strong>{nomeCliente ?? 'cliente'}</strong> 👋
+                </span>
+                                <Link to="/profilo" className="showroom-header-link">
                                     Profilo
                                 </Link>
                                 <Link
@@ -132,9 +130,10 @@ const ShowroomPage: React.FC = () => {
                                 </Link>
                                 <button
                                     className="showroom-logout-btn"
+                                    data-test="logout-button"
                                     onClick={async () => {
-                                        await logout()
-                                        window.location.href = '/showroom'
+                                        await logout();
+                                        window.location.href = '/showroom';
                                     }}
                                 >
                                     Logout
@@ -145,10 +144,7 @@ const ShowroomPage: React.FC = () => {
                                 <Link to="/login" className="showroom-nav-link">
                                     Login
                                 </Link>
-                                <Link
-                                    to="/register"
-                                    className="showroom-nav-link"
-                                >
+                                <Link to="/register" className="showroom-nav-link">
                                     Registrati
                                 </Link>
                             </>

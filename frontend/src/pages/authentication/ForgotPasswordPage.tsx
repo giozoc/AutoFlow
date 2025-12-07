@@ -1,3 +1,5 @@
+// src/pages/password/ForgotPasswordPage.tsx (adatta il path se diverso)
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { forgotPassword } from '../../services/passwordService';
@@ -20,12 +22,13 @@ const ForgotPasswordPage: React.FC = () => {
             const res = await forgotPassword({ email });
 
             if (res.success && res.defaultPassword) {
+                // TC3_01 / TC3_03 – cliente esistente → defaultPassword = "Cliente123!"
                 setSuccessMsg(
                     `Abbiamo impostato una password di default: ${res.defaultPassword}. ` +
                     'Usala per accedere e ti verrà chiesto di scegliere una nuova password.',
                 );
             } else {
-                // email non esistente o altro → messaggio generico
+                // TC3_02 – email inesistente / nulla / vuota → success=false
                 setSuccessMsg(
                     'Se l’email è presente nei nostri sistemi, è stata impostata una password temporanea.',
                 );
@@ -48,12 +51,28 @@ const ForgotPasswordPage: React.FC = () => {
                     imposteremo una password temporanea.
                 </p>
 
-                {error && <div className="pw-alert pw-alert--error">{error}</div>}
+                {error && (
+                    <div
+                        className="pw-alert pw-alert--error"
+                        data-test="forgot-error"
+                    >
+                        {error}
+                    </div>
+                )}
                 {successMsg && (
-                    <div className="pw-alert pw-alert--success">{successMsg}</div>
+                    <div
+                        className="pw-alert pw-alert--success"
+                        data-test="forgot-success"
+                    >
+                        {successMsg}
+                    </div>
                 )}
 
-                <form className="pw-form" onSubmit={handleSubmit}>
+                <form
+                    className="pw-form"
+                    onSubmit={handleSubmit}
+                    data-test="forgot-form"
+                >
                     <div className="pw-group">
                         <label className="pw-label" htmlFor="email">
                             Email
@@ -65,6 +84,7 @@ const ForgotPasswordPage: React.FC = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            data-test="forgot-email"
                         />
                     </div>
 
@@ -72,6 +92,7 @@ const ForgotPasswordPage: React.FC = () => {
                         type="submit"
                         disabled={loading}
                         className="pw-btn"
+                        data-test="forgot-submit"
                     >
                         {loading ? 'Invio in corso...' : 'Imposta password di default'}
                     </button>

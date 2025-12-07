@@ -1,6 +1,7 @@
+// src/services/authService.ts
+
 import axios from 'axios';
-import type { LoginRequestDTO, LoginResponseDTO, Ruolo } from '../entities/auth';
-import type { RegisterClienteDTO } from '../entities/auth';
+import type { LoginRequestDTO, LoginResponseDTO, Ruolo, RegisterClienteDTO } from '../entities/auth';
 
 const API_BASE_URL = 'http://localhost:8080';
 const STORAGE_KEY = 'autoflow_auth';
@@ -44,23 +45,44 @@ export function clearAuthState() {
 export async function login(
     request: LoginRequestDTO,
 ): Promise<AuthState & { mustChangePassword?: boolean }> {
-    const response = await axios.post<LoginResponseDTO>(
-        `${API_BASE_URL}/auth/login`,
-        request,
-    );
+    try {
+        const response = await axios.post<LoginResponseDTO>(
+            `${API_BASE_URL}/auth/login`,
+            request,
+        );
 
-    const { token, ruolo, userId, mustChangePassword } = response.data;
+        const { token, ruolo, userId, mustChangePassword } = response.data;
 
-    const authState: AuthState = {
-        token,
-        ruolo,
-        userId,
-    };
+        const authState: AuthState = {
+            token,
+            ruolo,
+            userId,
+        };
 
-    setAuthState(authState);
-    return { ...authState, mustChangePassword };
+        setAuthState(authState);
+        return { ...authState, mustChangePassword };
+    } catch (err: any) {
+        // Estrae il messaggio restituito dal backend
+        let backendMessage = 'Credenziali non valide';
+
+        if (axios.isAxiosError(err)) {
+            const data = err.response?.data;
+
+            if (typeof data === 'string') {
+                // es: il backend restituisce direttamente una stringa
+                backendMessage = data;
+            } else if (data && typeof (data as any).message === 'string') {
+                // es: { "message": "Utente non trovato" }
+                backendMessage = (data as any).message;
+            }
+        } else if (err instanceof Error && err.message) {
+            backendMessage = err.message;
+        }
+
+        // Rilanciamo un Error che il LoginPage può gestire
+        throw new Error(backendMessage);
+    }
 }
-
 
 export async function logout(): Promise<void> {
     const { token } = getAuthState();
@@ -71,7 +93,7 @@ export async function logout(): Promise<void> {
                 {},
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`,   // FIX IMPORTANTE
+                        Authorization: `Bearer ${token}`,   // OK per TC1_12
                     },
                 }
             );
@@ -86,7 +108,7 @@ export function authHeaders() {
     const { token } = getAuthState();
     return token
         ? {
-            Authorization: `Bearer ${token}`,        // FIX IMPORTANTE
+            Authorization: `Bearer ${token}`,
         }
         : {};
 }

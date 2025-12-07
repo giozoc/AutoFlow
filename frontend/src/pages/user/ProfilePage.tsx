@@ -1,5 +1,3 @@
-// src/pages/profile/ProfilePage.tsx
-
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -45,6 +43,7 @@ const ProfilePage: React.FC = () => {
         }
     }, [isAllowed, navigate])
 
+    // caricamento profilo corrente
     useEffect(() => {
         if (!isAllowed) return
 
@@ -94,7 +93,13 @@ const ProfilePage: React.FC = () => {
             setSuccess('Profilo aggiornato correttamente.')
         } catch (err) {
             console.error(err)
-            setError('Errore durante il salvataggio del profilo.')
+
+            //Mostra il messaggio esatto del backend se presente
+            if (err instanceof Error && err.message) {
+                setError(err.message) // es: "Nome troppo corto", "Numero di telefono non valido", ...
+            } else {
+                setError('Errore durante il salvataggio del profilo.')
+            }
         } finally {
             setSaving(false)
         }
@@ -132,7 +137,6 @@ const ProfilePage: React.FC = () => {
             }
 
             if (auth.ruolo === 'CLIENTE') {
-                // usiamo la stessa logica del form clienti:
                 const clientePayload: ClienteDTO = {
                     ...(profilo as ClienteDTO),
                     // assicurati che ClienteDTO abbia password?: string
@@ -213,12 +217,18 @@ const ProfilePage: React.FC = () => {
 
                 {/* MESSAGGI PROFILO */}
                 {error && (
-                    <p className="profile-message profile-message--error">
+                    <p
+                        className="profile-message profile-message--error"
+                        data-test="profile-error"
+                    >
                         {error}
                     </p>
                 )}
                 {success && (
-                    <p className="profile-message profile-message--success">
+                    <p
+                        className="profile-message profile-message--success"
+                        data-test="toast-success"
+                    >
                         {success}
                     </p>
                 )}
@@ -401,6 +411,7 @@ const ProfilePage: React.FC = () => {
                                     type="submit"
                                     className="profile-btn-primary"
                                     disabled={saving}
+                                    data-test="salva-profilo"
                                 >
                                     {saving
                                         ? 'Salvataggio…'

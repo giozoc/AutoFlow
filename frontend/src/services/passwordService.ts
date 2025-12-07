@@ -1,3 +1,4 @@
+// src/services/passwordService.ts
 import axios from 'axios';
 import type {
     PasswordResetRequestDTO,
@@ -15,6 +16,9 @@ export async function forgotPassword(
         `${API_BASE_URL}/auth/password/reset-request`,
         payload,
     );
+    // Il backend restituisce sempre 200 con:
+    //  - { success: true, defaultPassword: "Cliente123!" } se cliente esistente
+    //  - { success: false, defaultPassword: null } se email nulla / vuota / inesistente
     return res.data;
 }
 
@@ -26,8 +30,9 @@ export async function changePasswordAfterReset(
         throw new Error('Token di sessione mancante');
     }
 
+    // IMPORTANTE per TC3: il backend si aspetta "Bearer <token>"
     const payload: PasswordFirstChangeDTO = {
-        token,
+        token: `Bearer ${token}`,
         nuovaPassword,
     };
 
@@ -35,5 +40,8 @@ export async function changePasswordAfterReset(
         `${API_BASE_URL}/auth/password/first-change`,
         payload,
     );
+    // Il backend restituisce:
+    //  - true  se token valido e utente NON attivo (post reset) -> password aggiornata, attivo=true
+    //  - false se token inesistente o utente già attivo
     return res.data;
 }

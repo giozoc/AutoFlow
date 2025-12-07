@@ -1,3 +1,5 @@
+// src/pages/password/FirstPasswordChangePage.tsx (adatta il path se diverso)
+
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { changePasswordAfterReset } from '../../services/passwordService';
@@ -27,6 +29,7 @@ const FirstPasswordChangePage: React.FC = () => {
         setSuccess(null);
 
         if (newPassword !== confirmPassword) {
+            // Caso FE specifico per TC3: password non coincidono
             setError('Le password non coincidono.');
             return;
         }
@@ -35,6 +38,7 @@ const FirstPasswordChangePage: React.FC = () => {
         try {
             const ok = await changePasswordAfterReset(newPassword);
             if (!ok) {
+                // token inesistente o utente già attivo → TC3_05 / TC3_06 (dal punto di vista FE sono uguali)
                 setError(
                     'Impossibile aggiornare la password. Riprova il recupero password.',
                 );
@@ -65,18 +69,35 @@ const FirstPasswordChangePage: React.FC = () => {
                     password personale.
                 </p>
 
-                {error && <div className="pw-alert pw-alert--error">{error}</div>}
+                {error && (
+                    <div
+                        className="pw-alert pw-alert--error"
+                        data-test="first-change-error"
+                    >
+                        {error}
+                    </div>
+                )}
                 {success && (
-                    <div className="pw-alert pw-alert--success">{success}</div>
+                    <div
+                        className="pw-alert pw-alert--success"
+                        data-test="first-change-success"
+                    >
+                        {success}
+                    </div>
                 )}
 
-                <form className="pw-form" onSubmit={handleSubmit}>
+                <form
+                    className="pw-form"
+                    onSubmit={handleSubmit}
+                    data-test="first-change-form"
+                >
                     <div className="pw-group">
                         <label className="pw-label">Email</label>
                         <input
                             className="pw-input"
                             value={email}
                             disabled
+                            data-test="first-change-email"
                         />
                     </div>
 
@@ -91,6 +112,7 @@ const FirstPasswordChangePage: React.FC = () => {
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                             required
+                            data-test="first-change-new"
                         />
                     </div>
 
@@ -107,6 +129,7 @@ const FirstPasswordChangePage: React.FC = () => {
                                 setConfirmPassword(e.target.value)
                             }
                             required
+                            data-test="first-change-confirm"
                         />
                     </div>
 
@@ -114,12 +137,11 @@ const FirstPasswordChangePage: React.FC = () => {
                         type="submit"
                         className="pw-btn"
                         disabled={loading}
+                        data-test="first-change-submit"
                     >
                         {loading ? 'Salvataggio...' : 'Cambia password'}
                     </button>
                 </form>
-
-
             </div>
         </div>
     );
