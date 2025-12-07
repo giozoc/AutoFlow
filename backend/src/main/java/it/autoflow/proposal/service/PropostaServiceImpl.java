@@ -10,6 +10,8 @@ import it.autoflow.user.entity.AddettoVendite;
 import it.autoflow.user.entity.Cliente;
 import it.autoflow.user.repository.AddettoVenditeRepository;
 import it.autoflow.user.repository.ClienteRepository;
+import it.autoflow.vehicle.entity.StatoVeicolo;
+import it.autoflow.vehicle.entity.Veicolo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -71,23 +73,44 @@ public class PropostaServiceImpl implements PropostaService {
     public PropostaDTO create(PropostaDTO dto) {
         Proposta proposta = new Proposta();
 
+        // --- TC4_02: Cliente non trovato ---
         Cliente cliente = clienteRepository.findById(dto.getClienteId())
-                .orElseThrow(() -> new EntityNotFoundException("Cliente non trovato con id: " + dto.getClienteId()));
+                .orElseThrow(() -> new EntityNotFoundException("Cliente non trovato"));
 
+        // --- TC4_05: Operatore non autorizzato (se specificato) ---
         if (dto.getAddettoVenditeId() != null) {
             AddettoVendite addetto = addettoVenditeRepository.findById(dto.getAddettoVenditeId())
-                    .orElseThrow(() -> new EntityNotFoundException(
-                            "Addetto vendite non trovato con id: " + dto.getAddettoVenditeId()
-                    ));
+                    .orElseThrow(() -> new IllegalStateException("Operatore non autorizzato"));
+
+            if (!addetto.isAttivo()) {
+                throw new IllegalStateException("Operatore non autorizzato");
+            }
+
             proposta.setAddettoVendite(addetto);
         } else {
             // creata dal cliente → nessun addetto ancora assegnato
             proposta.setAddettoVendite(null);
         }
 
+        // --- TC4_03: Configurazione non valida ---
         Configurazione configurazione = configurazioneRepository.findById(dto.getConfigurazioneId())
-                .orElseThrow(() -> new EntityNotFoundException("Configurazione non trovata con id: " + dto.getConfigurazioneId()));
+                .orElseThrow(() -> new IllegalArgumentException("Configurazione non valida"));
 
+        // la configurazione deve appartenere allo stesso cliente
+        if (configurazione.getCliente() == null ||
+                !configurazione.getCliente().getId().equals(cliente.getId())) {
+            throw new IllegalArgumentException("Configurazione non valida");
+        }
+
+        // --- TC4_04: Veicolo non disponibile ---
+        Veicolo veicolo = configurazione.getVeicolo();
+        if (veicolo == null ||
+                veicolo.getStato() != StatoVeicolo.DISPONIBILE ||
+                !veicolo.isVisibileAlPubblico()) {
+            throw new IllegalStateException("Veicolo non disponibile");
+        }
+
+        // se tutti i controlli sono passati, setto cliente+configurazione
         proposta.setCliente(cliente);
         proposta.setConfigurazione(configurazione);
 

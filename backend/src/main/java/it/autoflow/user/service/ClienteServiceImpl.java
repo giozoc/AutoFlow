@@ -52,10 +52,51 @@ public class ClienteServiceImpl implements ClienteService, CrudService<Cliente, 
         Cliente existing = clienteRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente non trovato"));
 
-        existing.setNome(entity.getNome());
-        existing.setCognome(entity.getCognome());
+        // --- TC2_10: account disattivato ---
+        if (!existing.isAttivo()) {
+            throw new IllegalStateException("Account disattivato");
+        }
+
+        String nome = entity.getNome();
+        String cognome = entity.getCognome();
+        String telefono = entity.getTelefono();
+
+        // --- Validazione NOME (TC2_02, TC2_03, TC2_04) ---
+        if (nome == null || nome.length() < 2) {
+            throw new IllegalArgumentException("Nome troppo corto");
+        }
+        if (nome.length() > 30) {
+            throw new IllegalArgumentException("Nome troppo lungo");
+        }
+        // Solo lettere e spazi (inclusi caratteri accentati)
+        if (!nome.matches("^[A-Za-zÀ-ÖØ-öø-ÿ ]+$")) {
+            throw new IllegalArgumentException("Formato nome non valido");
+        }
+
+        // --- Validazione COGNOME (TC2_05, TC2_06, TC2_07) ---
+        if (cognome == null || cognome.length() < 2) {
+            throw new IllegalArgumentException("Cognome troppo corto");
+        }
+        if (cognome.length() > 40) {
+            throw new IllegalArgumentException("Cognome troppo lungo");
+        }
+        if (!cognome.matches("^[A-Za-zÀ-ÖØ-öø-ÿ ]+$")) {
+            throw new IllegalArgumentException("Formato cognome non valido");
+        }
+
+        // --- Validazione TELEFONO (TC2_08, TC2_09) ---
+        if (telefono == null || telefono.length() < 10) {
+            throw new IllegalArgumentException("Numero di telefono non valido");
+        }
+        if (!telefono.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("Formato telefono non valido");
+        }
+
+        // Se tutti i controlli passano, aggiorno l'entità
+        existing.setNome(nome);
+        existing.setCognome(cognome);
         existing.setEmail(entity.getEmail());
-        existing.setTelefono(entity.getTelefono());
+        existing.setTelefono(telefono);
         existing.setIndirizzo(entity.getIndirizzo());
         existing.setAttivo(entity.isAttivo());
         existing.setCodiceFiscale(entity.getCodiceFiscale());
@@ -64,7 +105,6 @@ public class ClienteServiceImpl implements ClienteService, CrudService<Cliente, 
         // se usi l'email come username, tienila allineata
         existing.setUsername(entity.getEmail());
 
-        // password NON viene toccata qui
         return clienteRepository.save(existing);
     }
 

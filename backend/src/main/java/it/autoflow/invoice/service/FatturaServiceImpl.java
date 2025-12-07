@@ -7,6 +7,7 @@ import it.autoflow.invoice.entity.Fattura;
 import it.autoflow.invoice.repository.FatturaRepository;
 import it.autoflow.invoice.service.FatturaService;
 import it.autoflow.proposal.entity.Proposta;
+import it.autoflow.proposal.entity.StatoProposta;
 import it.autoflow.proposal.repository.PropostaRepository;
 import it.autoflow.user.entity.Cliente;
 import it.autoflow.user.repository.ClienteRepository;
@@ -160,20 +161,25 @@ public class FatturaServiceImpl implements FatturaService {
     @Override
     public FatturaDTO createFromProposta(Long propostaId) {
 
-        // 1. Recupero la proposta
+        // 1. Recupero la proposta (TC5_02)
         Proposta proposta = propostaRepository.findById(propostaId)
-                .orElseThrow(() -> new EntityNotFoundException(
-                        "Proposta non trovata con id: " + propostaId));
+                .orElseThrow(() -> new EntityNotFoundException("Proposta non trovata"));
 
         Cliente cliente = proposta.getCliente();
         if (cliente == null) {
-            throw new EntityNotFoundException("La proposta non ha un cliente associato.");
+            throw new EntityNotFoundException("Cliente non trovato per la proposta");
         }
 
-        // 2. Genero numero fattura
+        // 2. Controllo stato della proposta (TC5_03)
+        // Consideriamo "confermata" una proposta in stato ACCETTATA
+        if (proposta.getStato() != StatoProposta.ACCETTATA) {
+            throw new IllegalStateException("La proposta non è confermata");
+        }
+
+        // 3. Genero numero fattura
         String numero = generateInvoiceNumber();
 
-        // 3. Creo il DTO usando i dati della proposta
+        // 4. Creo il DTO usando i dati della proposta
         FatturaDTO dto = new FatturaDTO();
         dto.setNumeroFattura(numero);
         dto.setDataEmissione(LocalDate.now());
@@ -183,13 +189,15 @@ public class FatturaServiceImpl implements FatturaService {
         dto.setDataPagamento(null);
         dto.setDocumentoPdfId(null);
 
-        // 4. Uso il metodo create() già esistente
+        // 5. Persisto la fattura usando create()
         FatturaDTO fattura = create(dto);
 
-        // 5. GENERO IL PDF
+        // 6. GENERO IL PDF (TC5_04: qui può esplodere per spazio insufficiente)
+        // Se PdfDocumentService lancia IllegalStateException con il messaggio
+        // "Impossibile generare il PDF – spazio insufficiente", la propaghiamo.
         DocumentoPDF documento = pdfDocumentService.generateInvoicePdf(fattura.getId());
 
-        // 6. Collego il PDF alla fattura
+        // 7. Collego il PDF alla fattura
         Fattura f = fatturaRepository.findById(fattura.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Fattura non trovata dopo creazione"));
 
