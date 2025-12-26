@@ -2,7 +2,7 @@
 [![Swagger](https://img.shields.io/badge/Swagger-Online-brightgreen)](https://localhost:8080/swagger-ui/index.html)
 [![Architettura](https://img.shields.io/badge/Architecture-Three--Tier-blue)](#architettura)
 [![Licenza](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](#licenza)
-![GitHub Release](https://img.shields.io/github/v/release/<ORG>/<REPO>)
+[![GitHub Release](https://img.shields.io/github/v/release/giozoc/AutoFlow)](https://github.com/giozoc/AutoFlow/releases)
 
 <div align="center">
   <img src="Deliverables/logo.png" alt="AutoFlow Logo" width="200" height="200">
