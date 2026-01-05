@@ -6,7 +6,7 @@ import { getTutteLeProposte } from '../../services/proposalService'
 import type { PropostaDTO } from '../../entities/proposal'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminproposte.css'
+import '../../styles/adminproposte.css'
 
 const AdminProposalsListPage: React.FC = () => {
     const [proposte, setProposte] = useState<PropostaDTO[]>([])

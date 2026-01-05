@@ -12,7 +12,7 @@ import {
 } from '../../services/staffService'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminstaff.css'
+import '../../styles/adminstaff.css'
 
 function emptyAddetto(): AddettoVenditeDTO {
     return {

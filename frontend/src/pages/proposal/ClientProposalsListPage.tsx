@@ -4,7 +4,7 @@ import { getProposteCliente } from '../../services/proposalService'
 import type { PropostaDTO } from '../../entities/proposal'
 import { getAuthState, logout } from '../../services/authService'
 
-import './mieproposte.css'
+import '../../styles/mieproposte.css'
 
 const ClientProposalsListPage: React.FC = () => {
     const [proposte, setProposte] = useState<PropostaDTO[]>([])

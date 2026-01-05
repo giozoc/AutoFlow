@@ -15,7 +15,7 @@ import { getTutteLeProposte } from '../../services/proposalService'
 import { getAuthState, logout } from '../../services/authService'
 import { useNavigate, Link } from 'react-router-dom'
 
-import './mieconf.css'
+import '../../styles/mieconf.css'
 
 type ConfigForm = ConfigurazioneDTO
 

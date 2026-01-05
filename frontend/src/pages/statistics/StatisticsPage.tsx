@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import './adminstatistics.css'
+import '../../styles/adminstatistics.css'
 
 import { getDashboardStatistics } from '../../services/statisticsService'
 import type { DashboardStatisticsDTO } from '../../entities/statistics'

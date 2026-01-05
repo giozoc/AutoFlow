@@ -10,7 +10,7 @@ import {
 } from '../../services/clientService'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminclienti.css'
+import '../../styles/adminclienti.css'
 
 function emptyCliente(): ClienteDTO {
     return {

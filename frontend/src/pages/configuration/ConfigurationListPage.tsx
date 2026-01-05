@@ -19,7 +19,7 @@ import {
 import { getTutteLeProposte } from '../../services/proposalService'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminconfig.css'
+import '../../styles/adminconfig.css'
 
 type ConfigForm = ConfigurazioneDTO
 

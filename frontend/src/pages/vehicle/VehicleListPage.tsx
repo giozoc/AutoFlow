@@ -12,7 +12,7 @@ import {
 } from '../../services/vehicleService'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminveicoli.css'
+import '../../styles/adminveicoli.css'
 
 function emptyVeicolo(): VeicoloDTO {
     return {

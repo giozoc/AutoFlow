@@ -15,7 +15,7 @@ import type { ConfigurazioneDTO } from '../../entities/configuration'
 import type { VeicoloDTO } from '../../entities/vehicle'
 import type { OptionalAccessorioDTO } from '../../entities/optional'
 
-import './propostadetail.css'
+import '../../styles/propostadetail.css'
 
 const ClientPropostaDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>()

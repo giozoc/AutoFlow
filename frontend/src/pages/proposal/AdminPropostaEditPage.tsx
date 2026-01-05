@@ -16,7 +16,7 @@ import type { VeicoloDTO } from '../../entities/vehicle'
 import type { OptionalAccessorioDTO } from '../../entities/optional'
 import type { FatturaDTO } from '../../entities/fattura'
 
-import './adminpropostaedit.css'
+import '../../styles/adminpropostaedit.css'
 
 const STATI_POSSIBILI: StatoProposta[] = [
     'BOZZA',

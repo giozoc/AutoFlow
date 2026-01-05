@@ -10,7 +10,7 @@ import {
 } from '../../services/optionalService'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminoptional.css'
+import '../../styles/adminoptional.css'
 
 function emptyOptional(): OptionalAccessorioDTO {
     return {

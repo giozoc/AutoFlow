@@ -12,7 +12,7 @@ import type { AddettoVenditeDTO } from '../../entities/user'
 import { updateCliente } from '../../services/clientService'
 import { updateStaff } from '../../services/staffService'
 
-import './profile.css'
+import '../../styles/profile.css'
 
 const ProfilePage: React.FC = () => {
     const navigate = useNavigate()

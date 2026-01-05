@@ -7,7 +7,7 @@ import { getAllFatture, downloadFatturaPdf } from '../../services/fatturaService
 import type { FatturaDTO } from '../../entities/fattura'
 import { getAuthState, logout } from '../../services/authService'
 
-import './adminfatture.css'
+import '../../styles/adminfatture.css'
 
 const AdminFattureListPage: React.FC = () => {
     const [fatture, setFatture] = useState<FatturaDTO[]>([])

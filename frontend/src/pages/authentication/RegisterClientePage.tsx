@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import type { RegisterClienteDTO } from '../../entities/auth'
 import { registerCliente } from '../../services/authService'
 
-import './register.css'
+import '../../styles/register.css'
 
 const RegisterClientePage: React.FC = () => {
     const navigate = useNavigate()

@@ -2,7 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuthState, logout } from '../../services/authService'
 
-import './admindashboard.css'
+import '../../styles/admindashboard.css'
 
 const AdminDashboard: React.FC = () => {
     const auth = getAuthState()

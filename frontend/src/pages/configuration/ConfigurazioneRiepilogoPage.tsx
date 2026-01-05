@@ -12,7 +12,7 @@ import { getAuthState } from '../../services/authService'
 import type { ConfigurazioneDTO } from '../../entities/configuration'
 import type { VeicoloDTO } from '../../entities/vehicle'
 
-import './configurazioneriepilogo.css'
+import '../../styles/configurazioneriepilogo.css'
 
 const ConfigurazioneRiepilogoPage: React.FC = () => {
     const { id } = useParams<{ id: string }>() // id configurazione

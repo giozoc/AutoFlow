@@ -6,7 +6,7 @@ import { searchShowroom } from '../../services/showroomService'
 import { getAuthState, logout } from '../../services/authService'
 import { getClienteById } from '../../services/clientService' // 👈 IMPORT CORRETTO
 
-import './showroom.css'
+import '../../styles/showroom.css'
 
 function emptyFiltro(): ShowroomFiltro {
     return {

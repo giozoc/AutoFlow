@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { changePasswordAfterReset } from '../../services/passwordService';
 import { logout } from '../../services/authService';
 
-import './password.css';
+import '../../styles/password.css';
 
 interface LocationState {
     email?: string;
